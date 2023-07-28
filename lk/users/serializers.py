@@ -2,6 +2,7 @@ import uuid
 
 from .models import CustomUser
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -28,3 +29,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
         return user
 
 
+class ProfileCustomUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = get_user_model()
+        fields = ['username', 'full_name', 'status']
